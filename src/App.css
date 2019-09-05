@@ -3,6 +3,24 @@
   color: #FFD1B5
 }
 
+.css-yk16xz-control, .css-1pahdxg-control, .css-2b097c-container, .recipeForm, .movieForm {
+  width: 22rem;
+}
+
+.recipeImg {
+  height: 18rem;
+  width: 20rem;
+  border-radius: 10px 10px 0px 0px; 
+}
+
+.recipeList {
+  text-align: left
+}
+
+.recipeListItem {
+  padding-bottom: 1.5rem
+}
+
 .App {
   text-align: center;
 }

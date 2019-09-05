@@ -4,12 +4,14 @@ import Welcome from '../Welcome';
 import RecipeDropDown from '../RecipeDropDown';
 import MovieDropDown from '../MovieDropDown';
 import RecipeContainer from '../RecipeContainer';
+import MovieContainer from '../MovieContainer';
 import 'reactstrap';
 import '../App.css';
 
 
 const recipeAPIKey = process.env.REACT_APP_API_KEYSPOON;
-const movieAPIKey = process.env.REACT_APP_API_KEYMOVIE;
+const movieAPIKey = process.env.REACT_APP_API_KEYMOVIE.replace(/\W/g, '');
+console.log(process.env.REACT_APP_API_KEYMOVIE)
 
 const booksAPI = 'https://openlibrary.org/subjects/mystery.json?limit=1';
 const moviesAPI = 'https://api.themoviedb.org/3/discover/movie?with_genres=';
@@ -28,7 +30,8 @@ class HomeContainer extends Component {
             movies: [],
             chosenMovie: {},
             book: {},
-            ready: false
+            recipeReady: false,
+            movieReady: false
         }
     }
 
@@ -46,7 +49,7 @@ class HomeContainer extends Component {
             this.setState({
                 recipes: recipes.results,
                 chosenRecipe: recipes.results[finalRecipe],
-                ready: true
+                recipeReady: true
             }, () => {
                 console.log(this.state.chosenRecipe);
                 console.log(recipes.results[finalRecipe]);
@@ -55,7 +58,7 @@ class HomeContainer extends Component {
             fetch(url2)
             .then(response => response.json())
             .then((instructions) => {
-                console.log(instructions[0].steps);
+                // console.log(instructions[0].steps);
                 this.setState({
                     chosenRecipeInstructions: instructions[0].steps
                 }, () => {
@@ -77,12 +80,21 @@ class HomeContainer extends Component {
     handleSubmitMovie = (e) => {
         e.preventDefault();
 
-        let url = (`${moviesAPI}${this.state.selectedGenre}&language=en-US?api_key=${movieAPIKey}`);
-        console.log(url);
+        let url = `${moviesAPI}${this.state.selectedGenre}&api_key=${movieAPIKey}&language=en-US`;
+
         fetch (url)
         .then(response => response.json())
         .then((movies) => {
-            console.log(movies);
+            console.log(movies.results);
+            let finalMovie = Math.floor(Math.random() * movies.results.length)
+            this.setState({
+                movies: movies.results,
+                chosenMovie: movies.results[finalMovie],
+                movieReady: true
+                // ready: true
+            }, () => {
+                console.log(this.state.chosenMovie)
+            })
             
         })
     }
@@ -100,7 +112,7 @@ class HomeContainer extends Component {
             <div>
                 <NavBar />
                 <div>
-                { !this.state.ready ? <Welcome /> : null }
+                { !this.state.recipeReady || !this.state.movieReady ? <Welcome /> : null }
                 </div>
                 <div>
                     <form className='recipeForm' onSubmit={this.handleSubmitRecipe} >
@@ -109,13 +121,16 @@ class HomeContainer extends Component {
                     </form>
                 </div>
                 <div>
-                    { this.state.ready ? <RecipeContainer recipe={this.state.chosenRecipe} instructions={this.state.chosenRecipeInstructions} /> : null }
+                    { this.state.recipeReady ? <RecipeContainer recipe={this.state.chosenRecipe} instructions={this.state.chosenRecipeInstructions} /> : null }
                 </div>
                 <div>
                     <form className='movieForm' onSubmit={this.handleSubmitMovie} >
                         <MovieDropDown currentState={this.props.state} handleSelection={this.handleMovieSelection} />
                         <button type='submit'>Submit</button>
                     </form>
+                </div>
+                <div>
+                    { this.state.movieReady ? <MovieContainer movie={this.state.chosenMovie} /> : null }
                 </div>
             </div>
         )

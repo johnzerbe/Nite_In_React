@@ -26,7 +26,7 @@ class MovieDropDown extends Component {
         super();
 
         this.state = {
-            cuisine: ''
+            genre: ''
         }
     }
 

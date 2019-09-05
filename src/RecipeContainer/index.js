@@ -3,7 +3,7 @@ import { Button, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 
 const RecipeContainer = (props) => {
-    const baseImageUrl = `https://spoonacular.com/recipeImages/${props.recipe.image}`;
+    const baseImageUrl = `https://spoonacular.com/recipeImages/${props.recipe.id}-480x360`;
 
     const recipeSteps = props.instructions.map((step, index) => {
         console.log(step)

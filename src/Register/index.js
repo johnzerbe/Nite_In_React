@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Form, Message } from 'semantic-ui-react'
 
 class Register extends Component {
     constructor() {
@@ -7,7 +8,8 @@ class Register extends Component {
 
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            message: ''
         }
     }
 
@@ -33,6 +35,12 @@ class Register extends Component {
 
         console.log(parsedRegister, ' < RESPONSE FROM REGISTER');
 
+         if(parsedRegister.status.code === 400){
+             this.setState({
+                message: parsedRegister.status.message
+             })
+         }
+
         if(parsedRegister.status.message === 'Success'){
             console.log('REGISTERED SUCCESSFULLY');
 
@@ -42,21 +50,18 @@ class Register extends Component {
 
     render() {
         return (
-            <div>
-                Register
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Create Username:
-                        <input type='text' name='username' onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Create Password:
-                        <input type='password' name='password' onChange={this.handleChange} />
-                    </label>
-                    <button type='submit'>
-                        Register
-                    </button>
-                </form>
+            <div className='loginPage'>
+                <h1>Register Account</h1>
+                <Form error className='loginForm' onSubmit={this.handleSubmit}>
+                    <Form.Input type='text' name='username' label='Username' placeholder='Create Username' onChange={this.handleChange}/>
+                    <Form.Input type='password' name='password' label='Password' placeholder='Create Password' onChange={this.handleChange}/>
+                    { this.state.message !== "" ? <Message
+                    error
+                    header='Wait a Minute!'
+                    content= {this.state.message}
+                    /> : null}
+                    <Button type='submit' >Register</Button>
+                </Form>
                 <Link to='/'>Back to Login</Link>
             </div>
         )

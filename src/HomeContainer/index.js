@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
+import { Grid, Segment } from 'semantic-ui-react';
 import NavBar from '../NavBar';
 import Welcome from '../Welcome';
 import RecipeDropDown from '../RecipeDropDown';
 import MovieDropDown from '../MovieDropDown';
 import RecipeContainer from '../RecipeContainer';
 import MovieContainer from '../MovieContainer';
-import 'reactstrap';
+// import 'reactstrap';
 import '../App.css';
 
 
 const recipeAPIKey = process.env.REACT_APP_API_KEYSPOON;
 const movieAPIKey = process.env.REACT_APP_API_KEYMOVIE.replace(/\W/g, '');
-console.log(process.env.REACT_APP_API_KEYMOVIE)
 
 const booksAPI = 'https://openlibrary.org/subjects/mystery.json?limit=1';
 const moviesAPI = 'https://api.themoviedb.org/3/discover/movie?with_genres=';
@@ -25,7 +25,9 @@ class HomeContainer extends Component {
             recipes: [],
             chosenRecipe: {},
             chosenRecipeInstructions: [],
+            chosenRecipeIngredients: [],
             selectedCuisine: '',
+            showRecipeDetails: false,
             selectedGenre: '',
             movies: [],
             chosenMovie: {},
@@ -63,6 +65,16 @@ class HomeContainer extends Component {
                     chosenRecipeInstructions: instructions[0].steps
                 }, () => {
                     console.log(this.state.chosenRecipeInstructions[0].step)
+                });
+                let url3 = (`https://api.spoonacular.com/recipes/${recipes.results[finalRecipe].id}/ingredientWidget.json?apiKey=${recipeAPIKey}`);
+                fetch(url3)
+                .then(response => response.json())
+                .then((ingredients) => {
+                    this.setState({
+                        chosenRecipeIngredients: ingredients.ingredients
+                    }, () => {
+                        console.log(this.state.chosenRecipeIngredients)
+                    })
                 })
             })
         });
@@ -107,34 +119,81 @@ class HomeContainer extends Component {
         console.log(this.state.selectedGenre)
     }
 
+    handleRecipeClick = (e) => {
+        this.setState((previousState) => ({
+            showRecipeDetails: !previousState.showRecipeDetails
+        }), () => {
+            console.log(this.state.showRecipeDetails)
+        })
+    }
+
     render() {
         return (
             <div>
                 <NavBar />
                 <div>
-                { !this.state.recipeReady || !this.state.movieReady ? <Welcome /> : null }
+                 { !this.state.recipeReady || !this.state.movieReady ? <Welcome /> : null }
                 </div>
-                <div>
-                    <form className='recipeForm' onSubmit={this.handleSubmitRecipe} >
-                        <RecipeDropDown currentState={this.props.state} handleSelection={this.handleRecipeSelection} />
-                        <button type='submit'>Submit</button>
-                    </form>
-                </div>
-                <div>
-                    { this.state.recipeReady ? <RecipeContainer recipe={this.state.chosenRecipe} instructions={this.state.chosenRecipeInstructions} /> : null }
-                </div>
-                <div>
-                    <form className='movieForm' onSubmit={this.handleSubmitMovie} >
-                        <MovieDropDown currentState={this.props.state} handleSelection={this.handleMovieSelection} />
-                        <button type='submit'>Submit</button>
-                    </form>
-                </div>
-                <div>
-                    { this.state.movieReady ? <MovieContainer movie={this.state.chosenMovie} /> : null }
-                </div>
+                <Grid stackable columns={4}>
+                    <Grid.Column width={2}>
+
+                    </Grid.Column>
+                    <Grid.Column width={6}>
+                        <Segment>
+                            <form className='recipeForm' onSubmit={this.handleSubmitRecipe} >
+                                <RecipeDropDown currentState={this.props.state} handleSelection={this.handleRecipeSelection} />
+                                <button type='submit'>Submit</button>
+                            </form>
+                        </Segment>
+                        <Segment>
+                            { this.state.recipeReady ? <RecipeContainer currentState={this.state} recipe={this.state.chosenRecipe} instructions={this.state.chosenRecipeInstructions} ingredients={this.state.chosenRecipeIngredients} handleClick={this.handleRecipeClick} /> : null }
+                        </Segment>
+                    </Grid.Column>
+                    <Grid.Column width={6}>
+                        <Segment>
+                            <form className='movieForm' onSubmit={this.handleSubmitMovie} >
+                                <MovieDropDown currentState={this.props.state} handleSelection={this.handleMovieSelection} />
+                                <button type='submit'>Submit</button>
+                            </form>
+                        </Segment>
+                        <Segment>
+                            { this.state.movieReady ? <MovieContainer movie={this.state.chosenMovie} /> : null }
+                        </Segment>
+                    </Grid.Column>
+                    <Grid.Column width={2}>
+
+                    </Grid.Column>
+                </Grid>
             </div>
         )
     }
 }
 
 export default HomeContainer
+
+
+            // // <div>
+            // //     <NavBar />
+            // //     <div>
+            // //     { !this.state.recipeReady || !this.state.movieReady ? <Welcome /> : null }
+            // //     </div>
+            // //     <div>
+            // //         <form className='recipeForm' onSubmit={this.handleSubmitRecipe} >
+            // //             <RecipeDropDown currentState={this.props.state} handleSelection={this.handleRecipeSelection} />
+            // //             <button type='submit'>Submit</button>
+            // //         </form>
+            // //     </div>
+            // //     <div>
+            // //         { this.state.recipeReady ? <RecipeContainer currentState={this.state} recipe={this.state.chosenRecipe} instructions={this.state.chosenRecipeInstructions} ingredients={this.state.chosenRecipeIngredients} handleClick={this.handleRecipeClick} /> : null }
+            // //     </div>
+            // //     <div>
+            // //         <form className='movieForm' onSubmit={this.handleSubmitMovie} >
+            // //             <MovieDropDown currentState={this.props.state} handleSelection={this.handleMovieSelection} />
+            // //             <button type='submit'>Submit</button>
+            // //         </form>
+            // //     </div>
+            // //     <div>
+            // //         { this.state.movieReady ? <MovieContainer movie={this.state.chosenMovie} /> : null }
+            // //     </div>
+            // // </div>
+            // 

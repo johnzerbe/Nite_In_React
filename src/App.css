@@ -1,15 +1,28 @@
+/* Login and Register form class from semantic */
+.ui.form {
+  margin: 0 auto
+}
+
+.loginPage {
+  margin-top: 18%
+}
+
+.loginForm {
+  width: 40%;
+}
+
 .jumbotron {
   background-color: #5AB1B3;
   color: #FFD1B5
 }
 
-.css-yk16xz-control, .css-1pahdxg-control, .css-2b097c-container, .recipeForm, .movieForm {
+.recipe
+
+/* .css-yk16xz-control, .css-1pahdxg-control, .css-2b097c-container, .recipeForm, .movieForm {
   width: 22rem;
-}
+} */
 
 .recipeImg {
-  /* height: 18rem;
-  width: 20rem; */
   border-radius: 10px 10px 0px 0px; 
 }
 

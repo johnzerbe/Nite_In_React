@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Form, Message } from 'semantic-ui-react'
+
 
 class Login extends Component {
     constructor() {
@@ -7,7 +9,8 @@ class Login extends Component {
 
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            message: ''
         }
     }
 
@@ -33,6 +36,12 @@ class Login extends Component {
 
         console.log(parsedLogin, ' < RESPONSE FROM LOGIN');
 
+        if(parsedLogin.status.code === 400){
+            this.setState({
+               message: parsedLogin.status.message
+            })
+        }
+
         if(parsedLogin.status.message === 'Success') {
             console.log('YOU LOGGED IN SUCCESSFULLY');
 
@@ -42,21 +51,18 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                Login
-                <form onSubmit={this.handleSubmit}>
-                    <label>
-                        Username:
-                        <input type='text' name='username' onChange={this.handleChange} />
-                    </label>
-                    <label>
-                        Password:
-                        <input type='password' name='password' onChange={this.handleChange} />
-                    </label>
-                    <button type='submit'>
-                        Login
-                    </button>
-                </form>
+            <div className='loginPage'>
+                <h1>Login</h1>
+                <Form error className='loginForm' onSubmit={this.handleSubmit}>
+                    <Form.Input type='text' name='username' label='Username' placeholder='Username' onChange={this.handleChange}/>
+                    <Form.Input type='password' name='password' label='Password' placeholder='Password' onChange={this.handleChange}/>
+                    { this.state.message !== "" ? <Message
+                    error
+                    header='Wait a Minute!'
+                    content= {this.state.message}
+                    /> : null}
+                    <Button type='submit' >Login</Button>
+                </Form>
                 Don't have an account yet? <Link to='/register'>Register Here!</Link>
             </div>
         )

@@ -32,7 +32,7 @@ class MovieDropDown extends Component {
 
     render() {
         return (
-            <Select options={ movieGenreList } placeholder="Select Movie Genre" onChange={this.props.handleSelection} />
+            <Select className='dropDown' options={ movieGenreList } placeholder="Select Movie Genre" onChange={this.props.handleSelection} />
         )
     }
 }

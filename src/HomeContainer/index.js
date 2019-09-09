@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Segment } from 'semantic-ui-react';
-import NavBar from '../NavBar';
+import NavBarOne from '../NavBarOne';
 import Welcome from '../Welcome';
 import RecipeDropDown from '../RecipeDropDown';
 import MovieDropDown from '../MovieDropDown';
@@ -33,7 +33,8 @@ class HomeContainer extends Component {
             chosenMovie: {},
             book: {},
             recipeReady: false,
-            movieReady: false
+            movieReady: false,
+            page: "HomeContainer"
         }
     }
 
@@ -127,12 +128,52 @@ class HomeContainer extends Component {
         })
     }
 
+    handleLikeRecipeClick = async (e) => {
+        const likedRecipe = await fetch('http://localhost:9000/favorite/recipes', {
+            method: 'POST',
+            credentials: 'include',
+            body: JSON.stringify({
+                chosenRecipe: this.state.chosenRecipe, 
+                chosenRecipeInstructions: this.state.chosenRecipeInstructions, 
+                chosenRecipeIngredients: this.state.chosenRecipeIngredients
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const parsedFavorite = await likedRecipe.json();
+
+        console.log('parsedFavorite: ',parsedFavorite)
+    };
+
+    handleLikeMovieClick = async (e) => {
+        const likedMovie = await fetch('http://localhost:9000/favorite/movies', {
+            method: 'POST',
+            credentials: 'include',
+            body: JSON.stringify({
+                chosenMovie: this.state.chosenMovie, 
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const parsedFavorite = await likedMovie.json();
+
+        console.log('parsedFavorite: ', parsedFavorite);
+    }
+
     render() {
         return (
-            <div>
-                <NavBar />
-                <div>
+            <div className='container'>
+            <NavBarOne/>
+                {/* <NavBar /> */}
+                {/* <div>
                  { !this.state.recipeReady || !this.state.movieReady ? <Welcome /> : null }
+                </div> */}
+                <div>
+                    <img src='nitein_logo.png' className='logo' alt='logo'/>
                 </div>
                 <Grid stackable columns={4}>
                     <Grid.Column width={2}>
@@ -145,9 +186,11 @@ class HomeContainer extends Component {
                                 <button type='submit'>Submit</button>
                             </form>
                         </Segment>
-                        <Segment>
-                            { this.state.recipeReady ? <RecipeContainer currentState={this.state} recipe={this.state.chosenRecipe} instructions={this.state.chosenRecipeInstructions} ingredients={this.state.chosenRecipeIngredients} handleClick={this.handleRecipeClick} /> : null }
-                        </Segment>
+                        { this.state.recipeReady ?
+                        <div>
+                             <RecipeContainer currentState={this.state} recipe={this.state.chosenRecipe} instructions={this.state.chosenRecipeInstructions} ingredients={this.state.chosenRecipeIngredients} handleClick={this.handleRecipeClick} handleLike={this.handleLikeRecipeClick} />
+                        </div>
+                        : null }
                     </Grid.Column>
                     <Grid.Column width={6}>
                         <Segment>
@@ -156,9 +199,11 @@ class HomeContainer extends Component {
                                 <button type='submit'>Submit</button>
                             </form>
                         </Segment>
-                        <Segment>
-                            { this.state.movieReady ? <MovieContainer movie={this.state.chosenMovie} /> : null }
-                        </Segment>
+                        { this.state.movieReady ?
+                        <div>
+                             <MovieContainer movie={this.state.chosenMovie} handleLike={this.handleLikeMovieClick} /> 
+                        </div>
+                        : null }
                     </Grid.Column>
                     <Grid.Column width={2}>
 

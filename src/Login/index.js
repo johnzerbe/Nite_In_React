@@ -10,9 +10,12 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            message: ''
+            message: '',
+            isLogged: false
         }
     }
+
+    // componentDidMount
 
     handleChange = (e) => {
         this.setState(
@@ -45,6 +48,10 @@ class Login extends Component {
         if(parsedLogin.status.message === 'Success') {
             console.log('YOU LOGGED IN SUCCESSFULLY');
 
+            this.setState({
+                isLogged: true
+            });
+
             this.props.history.push('/home')
         }
     }
@@ -52,7 +59,7 @@ class Login extends Component {
     render() {
         return (
             <div className='loginPage'>
-                <h1>Login</h1>
+                <h1 className='loginTitle'>Login</h1>
                 <Form error className='loginForm' onSubmit={this.handleSubmit}>
                     <Form.Input type='text' name='username' label='Username' placeholder='Username' onChange={this.handleChange}/>
                     <Form.Input type='password' name='password' label='Password' placeholder='Password' onChange={this.handleChange}/>

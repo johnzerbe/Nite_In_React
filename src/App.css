@@ -1,10 +1,53 @@
+.container {
+  background-color: black
+}
+
+.navbar {
+  text-align: right;
+  font-size: 18px;
+}
+
+.navLink {
+  margin: 0 10px
+}
+
+.logo {
+  height: 85px;
+  width: auto;
+  margin-bottom: 15px
+}
+
+.logoLink {
+  height: 18px;
+  width: auto;
+  /* float: left */
+}
+
+/* .title {
+  font-family: 'Monoton', cursive;
+  font-weight: 400;
+  font-size: 5rem;
+  background: rgb(140,0,89);
+  background: linear-gradient(90deg, rgba(140,0,89,1) 0%, rgba(140,0,89,1) 0%, rgba(140,0,89,1) 14%, rgba(172,230,5,1) 87%);  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+
 /* Login and Register form class from semantic */
 .ui.form {
   margin: 0 auto
 }
 
 .loginPage {
-  margin-top: 18%
+  /* margin-top: 18%; */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+}
+
+.loginTitle {
+  font-size: 70px
 }
 
 .loginForm {
@@ -16,14 +59,36 @@
   color: #FFD1B5
 }
 
-.recipe
+.resultsContainer {
+  /* background-color: white; */
+  /* background: rgb(140,0,89); */
+  /* background: linear-gradient(180deg, rgba(140,0,89,1) 0%, rgba(140,0,89,1) 0%, rgba(140,0,89,0.30155812324929976) 0%, rgba(172,230,5,0.39959733893557425) 100%); */
+  background: rgb(140,0,89);
+  background: linear-gradient(180deg, rgba(140,0,89,1) 0%, rgba(140,0,89,1) 0%, rgba(235,198,221,1) 0%, rgba(203,214,172,1) 100%);
+  padding: 10px;
+  border-radius: .28571429rem;
+  overflow: hidden;
+}
 
-/* .css-yk16xz-control, .css-1pahdxg-control, .css-2b097c-container, .recipeForm, .movieForm {
-  width: 22rem;
-} */
 
-.recipeImg {
-  border-radius: 10px 10px 0px 0px; 
+
+.resultsImg {
+  border-radius: 10px 10px 0px 0px !important; 
+  margin-top: 10px !important;
+  border: 1px solid rgb(140,0,89) !important
+}
+
+.ingredientList {
+  display: inline-block;
+  text-align: left
+}
+
+.ui.segment {
+  background: rgba(235,198,221,1) !important
+}
+
+.dropDown {
+  margin-bottom: 5px
 }
 
 .recipeList {
@@ -32,6 +97,34 @@
 
 .recipeListItem {
   padding-bottom: 1.5rem
+}
+
+/* Drop Down Outline */
+.css-1pahdxg-control {
+  border-color: #8c0059 !important;
+  box-shadow: 0 0 0 1px #8c0059 !important
+}
+
+.css-1pahdxg-control:hover {
+  border-color: #8c0059 !important
+}
+
+/* Selected option from drop down */
+.css-9gakcf-option{
+  background-color: rgba(172, 230, 5, 1) !important;
+  color: black !important
+}
+
+/* Hover over drop down selection */
+.css-1n7v3ny-option {
+  background-color: rgba(172, 230, 5, 0.3) !important;
+}
+
+.userPageTitle {
+  color: rgba(172, 230, 5, 1);
+  font-family: 'Monoton', cursive;
+  font-weight: 400;
+  font-size: 85px;
 }
 
 .App {
@@ -53,17 +146,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

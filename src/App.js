@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Login from './Login';
+import NavBar from './NavBar';
 import Register from './Register';
 import HomeContainer from './HomeContainer';
 import UserContainer from './UserContainer';
@@ -17,15 +18,21 @@ const My404 = () => {
 
 function App() {
   return (
+    <div>
     <main className="App">
+    
       <Switch>
         <Route exact path='/' component={ Login } />
         <Route exact path='/register' component={ Register } />
         <Route exact path='/home' component={ HomeContainer } />
         <Route exact path='/mypage' component={ UserContainer } />
         <Route component={My404} />
+        <NavBar/>
+
       </Switch>
+
     </main>
+    </div>
   );
 }
 

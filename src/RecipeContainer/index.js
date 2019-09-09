@@ -8,9 +8,9 @@ const RecipeContainer = (props) => {
 
     const ingredientList = props.ingredients.map((ingredient, index) => {
         return (
-            <ListGroupItem key={index}>
+            <li key={index}>
                 {ingredient.name}:&nbsp;{ingredient.amount.us.value}&nbsp;{ingredient.amount.us.unit}
-            </ListGroupItem>
+            </li>
         )
     })
 
@@ -24,8 +24,8 @@ const RecipeContainer = (props) => {
     })
 
     return (
-        <Card>
-            <Card.Img className='recipeImg' variant="top" src={baseImageUrl}/>
+        <div className='resultsContainer'>
+            <Card.Img className='resultsImg' variant="top" src={baseImageUrl}/>
             <Card.Body>
                 <Card.Title><strong>{props.recipe.title.toUpperCase()}</strong></Card.Title>
                 <Card.Text>
@@ -34,26 +34,28 @@ const RecipeContainer = (props) => {
                 <Card.Text>
                 Ready in: {props.recipe.readyInMinutes} minutes
                 </Card.Text>
-                <Button onClick={props.handleClick}>{ props.currentState.showRecipeDetails ? 'Hide' : 'Show' } Details</Button>
+                <Button floated='left' onClick={props.handleClick}>{ props.currentState.showRecipeDetails ? 'Hide' : 'Show' } Details</Button>
                 { props.currentState.showRecipeDetails ? 
                 <div>
-                <ListGroup className="list-group-flush">
-                    { ingredientList }
-                </ListGroup>
+                    <div className='ingredientList'>
+                        <ul className="list-group-flush">
+                            { ingredientList }
+                        </ul>
+                    </div>
                 
-                <ListGroup className="list-group-flush recipeList">
-                    { recipeSteps }
-                </ListGroup>
+                    <ListGroup className="list-group-flush recipeList">
+                        { recipeSteps }
+                    </ListGroup>
                 </div>
                 : null }
-                <Button floated='left' basic color='red' icon>
+                <Button onClick={props.handleLike} floated='right' basic color='red' icon>
                     <Icon name='heart' />
                 </Button>
-                <Button variant="primary">Save for Later</Button>
+                <Button floated='right' variant="primary">Save for Later</Button>
                 
                 
             </Card.Body>
-        </Card>
+        </div>
     )
 }
 

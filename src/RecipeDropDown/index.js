@@ -33,7 +33,7 @@ class RecipeDropDown extends Component {
 
     render() {
         return (
-            <Select options={ cuisineList } placeholder="Select Cuisine" onChange={this.props.handleSelection} />
+            <Select className='dropDown' options={ cuisineList } placeholder="Select Cuisine" onChange={this.props.handleSelection} />
         )
     }
 }

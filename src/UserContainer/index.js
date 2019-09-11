@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import NavBarTwo from '../NavBarTwo';
-import UserLikedRecipes from '../UserLikedRecipes';
 import RecipeModal from '../RecipeModal';
 import MovieModal from '../MovieModal';
-import { Grid, Segment } from 'semantic-ui-react';
+import { Grid, Segment, Button, Icon } from 'semantic-ui-react';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
@@ -22,7 +21,7 @@ class UserContainer extends Component {
 
     componentDidMount() {
         this.getData();
-    }
+    };
 
     getData = async () => {
         try {
@@ -40,21 +39,39 @@ class UserContainer extends Component {
                 likedRecipes: dataResponse.data.favorites.recipes,
                 likedMovies: dataResponse.data.favorites.movies,
                 savedForLaterRecipes: dataResponse.data.savedForLater.recipes,
-                savedForLaterRecipes: dataResponse.data.savedForLater.movies
+                savedForLaterMovies: dataResponse.data.savedForLater.movies
             })
 
         } catch(err) {
             console.log('getData Error: ', err);
             return err;
         }
-    }
+    };
 
-    handleRecipeClick = (e) => {
+    handleModalClick = (e) => {
         this.setState((previousState) => ({
             showRecipeModal: !previousState.showRecipeModal
         }), () => {
             console.log(this.state.showRecipeModal);
         })
+    };
+
+    handleDeleteFavorite = async (id, type, e) => {
+        try {
+            const itemToDelete = await fetch(`http://localhost:9000/favorite/${id}/${type}`, {
+                method: 'DELETE',
+                credentials: 'include'
+            })
+
+            const parsedDeletedItem = await itemToDelete.json();
+
+            console.log('parsedDeletedItem: ', parsedDeletedItem);
+
+            this.getData();
+        } catch(err) {
+            console.log('handleDelete Error: ', err);
+            return err
+        }
     }
 
 
@@ -64,12 +81,35 @@ class UserContainer extends Component {
             return (
             <li>
                 <span className='favoriteListItem'>{recipe.chosenRecipe.title}</span>
-                <RecipeModal recipes={recipe.chosenRecipe} ingredients={recipe.chosenRecipeIngredients} steps={recipe.chosenRecipeInstructions} handleClick={this.handleRecipeClick} />
+                <RecipeModal currentState={this.props.state} recipes={recipe.chosenRecipe} ingredients={recipe.chosenRecipeIngredients} steps={recipe.chosenRecipeInstructions} handleClick={this.handleModalClick} handleDelete={this.handleDeleteFavorite} />
             </li>
         )}) : [];
 
         const likedMovies = this.state.likedRecipes.length > 0 ?
         this.state.likedMovies.map((movie) => {
+            return (
+                <li>
+                    <span className='favoriteListItem'>{movie.chosenMovie.title}</span>
+                    <MovieModal movie={movie.chosenMovie} handleDelete={this.handleDeleteFavorite}/>
+                </li>
+            )
+        }) : [];
+
+        const savedForLaterRecipes = this.state.savedForLaterRecipes.length > 0 ?
+        this.state.savedForLaterRecipes.map((recipe) => {
+            return (
+                <li>
+                    <span className='favoriteListItem'>{recipe.chosenRecipe.title}</span>
+                    <RecipeModal currentState={this.props.state} recipes={recipe.chosenRecipe} ingredients={recipe.chosenRecipeIngredients} steps={recipe.chosenRecipeInstructions} handleClick={this.handleModalClick} />
+                    <Button className='modalButton' onClick={this.handleClick} primary>
+            <Icon name='times' /> 
+            </Button>
+                </li>
+            )
+        }) : [];
+
+        const savedForLaterMovies = this.state.savedForLaterMovies.length > 0 ?
+        this.state.savedForLaterMovies.map((movie) => {
             return (
                 <li>
                     <span className='favoriteListItem'>{movie.chosenMovie.title}</span>
@@ -96,6 +136,9 @@ class UserContainer extends Component {
                     </Segment>
                     <Segment>
                         <h3>Saved for Later</h3>
+                        <ul className='userList'>
+                            { savedForLaterRecipes.length > 0 ? savedForLaterRecipes : null }
+                        </ul>
                     </Segment>
                     </Grid.Column>
                     <Grid.Column>
@@ -108,6 +151,9 @@ class UserContainer extends Component {
                     </Segment>
                     <Segment>
                         <h3>Saved for Later</h3>
+                        <ul className='userList'>
+                            { savedForLaterMovies.length > 0 ? savedForLaterMovies : null }
+                        </ul>
                     </Segment>
                     </Grid.Column>
                 </Grid>

@@ -135,9 +135,29 @@
   font-size: 85px;
 }
 
-.modalButton {
+/* .modalButton {
   height: 30px;
   width: auto
+} */
+
+.ui.modal {
+  background: #cbd6ac !important
+}
+
+i.icon {
+  display: inline
+}
+
+/* .ui.button {
+  width: 10% !important
+} */
+
+.ui.primary.button {
+  background-color: #9a3675 !important
+}
+
+.ingredientModal {
+  margin-bottom: 16px
 }
 
 .userList {

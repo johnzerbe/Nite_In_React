@@ -51,7 +51,7 @@ class Register extends Component {
     render() {
         return (
             <div className='loginPage'>
-                <h1>Register Account</h1>
+                <h1 className='loginTitle'>Register Account</h1>
                 <Form error className='loginForm' onSubmit={this.handleSubmit}>
                     <Form.Input type='text' name='username' label='Username' placeholder='Create Username' onChange={this.handleChange}/>
                     <Form.Input type='password' name='password' label='Password' placeholder='Create Password' onChange={this.handleChange}/>

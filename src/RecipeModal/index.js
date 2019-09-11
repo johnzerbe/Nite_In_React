@@ -4,6 +4,10 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 const RecipeModal = (props) => {
 
+    const handleDeleteRecipe = (id, e) => {
+        props.handleDelete(props.recipes.id, 'recipes')
+    }
+
     const baseImageUrl = `https://spoonacular.com/recipeImages/${props.recipes.id}-556x370`;
 
     const ingredientList = props.ingredients.length > 0 ?
@@ -24,15 +28,15 @@ const RecipeModal = (props) => {
     });
 
     return(
-        <Modal trigger={<Button className='modalButton' size='mini' primary>
+        <Modal className='modalBody' trigger={<Button onClick={props.handleClick} className='modalButton' size='mini' primary>
              <Icon name='right chevron' />
         </Button>}>
-            <Modal.Header>{props.recipes.title}</Modal.Header>
+            {/* <Modal.Header>{props.recipes.title}</Modal.Header> */}
             <Modal.Content image>
             <Image wrapped size='huge' src={baseImageUrl} />
             <Modal.Description>
-                <Header>Modal Header</Header>
-                <ListGroup>
+                <Header>{props.recipes.title}</Header>
+                <ListGroup className='ingredientModal'>
                 <strong>Ingredients</strong>
                 { ingredientList }
                 </ListGroup>
@@ -43,8 +47,8 @@ const RecipeModal = (props) => {
             </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
-            <Button primary>
-                Delete <Icon name='right chevron' />
+            <Button onClick={handleDeleteRecipe} primary>
+            <Icon name='times' />Delete 
             </Button>
             </Modal.Actions>
         </Modal>

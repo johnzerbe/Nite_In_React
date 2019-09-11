@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { Navbar, Nav } from 'react-bootstrap';
 
 const NavBarOne = (props) =>  {
-    console.log(props.location)
     return (
         <div  className='navbar'>
             <Link to='/home'>

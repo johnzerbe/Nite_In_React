@@ -26,8 +26,10 @@ class HomeContainer extends Component {
             chosenRecipe: {},
             chosenRecipeInstructions: [],
             chosenRecipeIngredients: [],
+            recipeImages: '',
             selectedCuisine: '',
             showRecipeDetails: false,
+            showRecipeButton: 'uncenteredRecipeButton',
             selectedGenre: '',
             movies: [],
             chosenMovie: {},
@@ -75,7 +77,20 @@ class HomeContainer extends Component {
                         chosenRecipeIngredients: ingredients.ingredients
                     }, () => {
                         console.log(this.state.chosenRecipeIngredients)
-                    })
+                    });
+                    // fetch(`https://spoonacular.com/recipeImages/${this.state.chosenRecipe.id}-312x231`, {
+                    //     method: 'GET',
+                        
+                    // })
+                    // .then((response) => {
+                    //     return response.text();
+                    // })
+                    // .then((data) => {
+                    //     this.setState({
+                    //         recipeImages: JSON.parse(data)
+                    //     })
+                    // })
+                    
                 })
             })
         });
@@ -124,7 +139,15 @@ class HomeContainer extends Component {
         this.setState((previousState) => ({
             showRecipeDetails: !previousState.showRecipeDetails
         }), () => {
-            console.log(this.state.showRecipeDetails)
+            console.log(this.state.showRecipeDetails);
+            this.showRecipeButton();
+        })
+    }
+
+    showRecipeButton = () => {
+        const css = this.state.showRecipeDetails ? 'centeredRecipeButton' : 'uncenteredRecipeButton'
+        this.setState({
+            showRecipeButton: css
         })
     }
 
@@ -164,6 +187,42 @@ class HomeContainer extends Component {
         console.log('parsedFavorite: ', parsedFavorite);
     }
 
+    handleSavedForLaterRecipe = async (e) => {
+        const savedRecipe = await fetch('http://localhost:9000/favorite/savedforlater/recipes', {
+            method: 'POST',
+            credentials: 'include',
+            body: JSON.stringify({
+                chosenRecipe: this.state.chosenRecipe, 
+                chosenRecipeInstructions: this.state.chosenRecipeInstructions, 
+                chosenRecipeIngredients: this.state.chosenRecipeIngredients
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const parsedSavedRecipe = await savedRecipe.json();
+
+        console.log('parsedSavedRecipe: ', parsedSavedRecipe);
+    }
+
+    handleSavedForLaterMovie = async (e) => {
+        const savedMovie = await fetch('http://localhost:9000/favorite/savedforlater/movies', {
+            method: 'POST',
+            credentials: 'include',
+            body: JSON.stringify({
+                chosenMovie: this.state.chosenMovie,
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const parsedSavedMovie = await savedMovie.json();
+
+        console.log('parsedSavedMovie: ', parsedSavedMovie);
+    }
+
     render() {
         return (
             <div className='container'>
@@ -188,7 +247,7 @@ class HomeContainer extends Component {
                         </Segment>
                         { this.state.recipeReady ?
                         <div>
-                             <RecipeContainer currentState={this.state} recipe={this.state.chosenRecipe} instructions={this.state.chosenRecipeInstructions} ingredients={this.state.chosenRecipeIngredients} handleClick={this.handleRecipeClick} handleLike={this.handleLikeRecipeClick} />
+                             <RecipeContainer currentState={this.state} recipe={this.state.chosenRecipe} recipeImage={this.state.recipeImages} instructions={this.state.chosenRecipeInstructions} ingredients={this.state.chosenRecipeIngredients} handleClick={this.handleRecipeClick} handleLike={this.handleLikeRecipeClick} handleSavedForLater={this.handleSavedForLaterRecipe} />
                         </div>
                         : null }
                     </Grid.Column>
@@ -201,7 +260,7 @@ class HomeContainer extends Component {
                         </Segment>
                         { this.state.movieReady ?
                         <div>
-                             <MovieContainer movie={this.state.chosenMovie} handleLike={this.handleLikeMovieClick} /> 
+                             <MovieContainer movie={this.state.chosenMovie} handleLike={this.handleLikeMovieClick} handleSavedForLater={this.handleSavedForLaterMovie} /> 
                         </div>
                         : null }
                     </Grid.Column>

@@ -18,7 +18,7 @@ const MovieContainer = (props) => {
                 <Button floated='right' onClick={props.handleLike} basic color='red' icon>
                     <Icon name='heart' />
                 </Button>
-                <Button floated='right' variant="primary">Save for Later</Button>
+                <Button floated='right' variant="primary" onClick={props.handleSavedForLater} >Save for Later</Button>
             </Card.Body>
         </div>
         

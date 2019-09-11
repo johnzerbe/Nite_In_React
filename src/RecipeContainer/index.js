@@ -34,7 +34,7 @@ const RecipeContainer = (props) => {
                 <Card.Text>
                 Ready in: {props.recipe.readyInMinutes} minutes
                 </Card.Text>
-                <Button floated='left' onClick={props.handleClick}>{ props.currentState.showRecipeDetails ? 'Hide' : 'Show' } Details</Button>
+                <Button className={props.currentState.showRecipeButton} onClick={props.handleClick}>{ props.currentState.showRecipeDetails ? 'Hide' : 'Show' } Details</Button>
                 { props.currentState.showRecipeDetails ? 
                 <div>
                     <div className='ingredientList'>
@@ -51,7 +51,7 @@ const RecipeContainer = (props) => {
                 <Button onClick={props.handleLike} floated='right' basic color='red' icon>
                     <Icon name='heart' />
                 </Button>
-                <Button floated='right' variant="primary">Save for Later</Button>
+                <Button floated='right' variant="primary" onClick={props.handleSavedForLater} >Save for Later</Button>
                 
                 
             </Card.Body>

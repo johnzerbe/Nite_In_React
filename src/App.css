@@ -18,7 +18,7 @@
 }
 
 .logoLink {
-  height: 18px;
+  height: 25px;
   width: auto;
   /* float: left */
 }
@@ -78,9 +78,17 @@
   border: 1px solid rgb(140,0,89) !important
 }
 
+.centeredRecipeButton {
+  margin: 0 auto !important
+}
+
+.uncenteredRecipeButton {
+  float: left
+}
+
 .ingredientList {
   display: inline-block;
-  text-align: left
+  text-align: left;
 }
 
 .ui.segment {
@@ -125,6 +133,20 @@
   font-family: 'Monoton', cursive;
   font-weight: 400;
   font-size: 85px;
+}
+
+.modalButton {
+  height: 30px;
+  width: auto
+}
+
+.userList {
+  font-size: 16px;
+  text-align: left
+}
+
+.favoriteListItem {
+  margin-right: 10px
 }
 
 .App {

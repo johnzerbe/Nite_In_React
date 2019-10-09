@@ -6,6 +6,7 @@ import RecipeDropDown from '../RecipeDropDown';
 import MovieDropDown from '../MovieDropDown';
 import RecipeContainer from '../RecipeContainer';
 import MovieContainer from '../MovieContainer';
+import { Button } from 'semantic-ui-react';
 // import 'reactstrap';
 import '../App.css';
 
@@ -22,12 +23,14 @@ class HomeContainer extends Component {
         super(props);
 
         this.state = {
+            showJumbo: true,
             recipes: [],
             chosenRecipe: {},
             chosenRecipeInstructions: [],
             chosenRecipeIngredients: [],
             recipeImages: '',
             selectedCuisine: '',
+            selectedDietOption: '',
             showRecipeDetails: false,
             showRecipeButton: 'uncenteredRecipeButton',
             selectedGenre: '',
@@ -36,14 +39,19 @@ class HomeContainer extends Component {
             book: {},
             recipeReady: false,
             movieReady: false,
-            page: "HomeContainer"
         }
+    }
+
+    handleGotIt = (e) => {
+        this.setState({
+            showJumbo: false
+        })
     }
 
     handleSubmitRecipe = (e) => {
         e.preventDefault();
         
-        let url = (`${recipeAPI}${this.state.selectedCuisine}&tag=dinner&apiKey=${recipeAPIKey}`);
+        let url = (`${recipeAPI}${this.state.selectedCuisine}&diet=${this.state.selectedDietOption}&tag=dinner&apiKey=${recipeAPIKey}`);
         console.log(url);
         fetch(url)
         .then(response => response.json())
@@ -63,12 +71,15 @@ class HomeContainer extends Component {
             fetch(url2)
             .then(response => response.json())
             .then((instructions) => {
+                if(instructions[0]){
+                    this.setState({
+                        chosenRecipeInstructions: instructions[0].steps
+                    }, () => {
+                        console.log(this.state.chosenRecipeInstructions[0].step)
+                    });
+                }
                 // console.log(instructions[0].steps);
-                this.setState({
-                    chosenRecipeInstructions: instructions[0].steps
-                }, () => {
-                    console.log(this.state.chosenRecipeInstructions[0].step)
-                });
+                
                 let url3 = (`https://api.spoonacular.com/recipes/${recipes.results[finalRecipe].id}/ingredientWidget.json?apiKey=${recipeAPIKey}`);
                 fetch(url3)
                 .then(response => response.json())
@@ -103,6 +114,13 @@ class HomeContainer extends Component {
             selectedCuisine: option.value
         });
         console.log(this.state.selectedCuisine);
+    }
+
+    handleOptionChange = (option) => {
+        console.log(option.target.value);
+        this.setState({
+            selectedDietOption: option.target.value
+        })
     }
 
     handleSubmitMovie = (e) => {
@@ -231,36 +249,54 @@ class HomeContainer extends Component {
                 {/* <div>
                  { !this.state.recipeReady || !this.state.movieReady ? <Welcome /> : null }
                 </div> */}
-                <div>
-                    <img src='nitein_logo.png' className='logo' alt='logo'/>
+                
+                <div className='titleDiv'>
+                    {/* <img src='nitein_logo.png' className='logo' alt='logo'/> */}
+                    <h1 className='appName'>NiteIn</h1>
                 </div>
-                <Grid stackable columns={4}>
+                {/* <div>
+                 <Welcome handleClick={this.handleGotIt}/>
+                 <Button onClick={this.handleGotIt}>Got It!</Button>
+                 </div> */}
+                <Grid className='everything' stackable columns={4}>
                     <Grid.Column width={2}>
-
+                    
                     </Grid.Column>
                     <Grid.Column width={6}>
-                        <Segment>
+                        <Segment className='dropForm'>
                             <form className='recipeForm' onSubmit={this.handleSubmitRecipe} >
+                            <label className='radioBtn'>
+                            <input className='dietInput' type='radio' name='diet' value='' checked={this.state.selectedDietOption === ""} onChange={this.handleOptionChange}/>
+                            no restrictions
+                            </label>
+                            <label className='radioBtn'>
+                            <input  className='dietInput' type='radio' name='diet' value='vegetarian' checked={this.state.selectedDietOption === "vegetarian"} onChange={this.handleOptionChange}/>
+                            vegetarian
+                            </label>
+                            <label className='radioBtn'>
+                            <input className='dietInput' type='radio' name='diet' value='vegan' checked={this.state.selectedDietOption === "vegan"} onChange={this.handleOptionChange}/>
+                            vegan
+                            </label>
                                 <RecipeDropDown currentState={this.props.state} handleSelection={this.handleRecipeSelection} />
-                                <button type='submit'>Submit</button>
+                                <Button className='searchBtn' type='submit'>Bon Appétit</Button>
                             </form>
                         </Segment>
                         { this.state.recipeReady ?
                         <div>
-                             <RecipeContainer currentState={this.state} recipe={this.state.chosenRecipe} recipeImage={this.state.recipeImages} instructions={this.state.chosenRecipeInstructions} ingredients={this.state.chosenRecipeIngredients} handleClick={this.handleRecipeClick} handleLike={this.handleLikeRecipeClick} handleSavedForLater={this.handleSavedForLaterRecipe} />
+                             <RecipeContainer className='results' currentState={this.state} recipe={this.state.chosenRecipe} recipeImage={this.state.recipeImages} instructions={this.state.chosenRecipeInstructions} ingredients={this.state.chosenRecipeIngredients} handleNext={this.handleSubmitRecipe} handleClick={this.handleRecipeClick} handleLike={this.handleLikeRecipeClick} handleSavedForLater={this.handleSavedForLaterRecipe} />
                         </div>
                         : null }
                     </Grid.Column>
                     <Grid.Column width={6}>
-                        <Segment>
-                            <form className='movieForm' onSubmit={this.handleSubmitMovie} >
+                        <Segment className='movieForm'>
+                            <form onSubmit={this.handleSubmitMovie} >
                                 <MovieDropDown currentState={this.props.state} handleSelection={this.handleMovieSelection} />
-                                <button type='submit'>Submit</button>
+                                <Button className='searchBtn' type='submit'>NiteIn Presents...</Button>
                             </form>
                         </Segment>
                         { this.state.movieReady ?
                         <div>
-                             <MovieContainer movie={this.state.chosenMovie} handleLike={this.handleLikeMovieClick} handleSavedForLater={this.handleSavedForLaterMovie} /> 
+                             <MovieContainer className='results' movie={this.state.chosenMovie} handleLike={this.handleLikeMovieClick} handleSavedForLater={this.handleSavedForLaterMovie} handleNext={this.handleSubmitMovie} /> 
                         </div>
                         : null }
                     </Grid.Column>

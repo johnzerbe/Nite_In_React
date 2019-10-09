@@ -1,14 +1,20 @@
-.container {
+/* .container {
   background-color: black
-}
+} */
 
 .navbar {
   text-align: right;
   font-size: 18px;
+  /* float: right */
 }
 
 .navLink {
-  margin: 0 10px
+  margin: 0 10px;
+  color: rgba(248,233,161,1)
+}
+
+.lead {
+  font-size: 1.7rem
 }
 
 .logo {
@@ -16,6 +22,33 @@
   width: auto;
   margin-bottom: 15px
 }
+
+.appName {
+  /* font-family: 'Limelight', cursive; */
+  font-family: 'Monoton', cursive;
+  font-weight: 400;
+  text-shadow: 1px 1px 0 rgba(255,255,255, 0.1);
+  /* background: rgb(170,52,127);
+  background: linear-gradient(90deg, rgba(170,52,127,1) 34%, rgba(114,231,130,1) 63%); */
+  /* background: rgb(255,206,54);
+  background: linear-gradient(160deg, rgba(255,206,54,1) 35%, rgba(255,111,14,1) 46%, rgba(74,103,255,1) 55%); */
+  background: rgb(248,233,161);
+  background: linear-gradient(160deg, rgba(248,233,161,1) 35%, rgba(247,108,108,1) 44%, rgba(36,48,92,1) 55%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-size: 7em
+}
+
+
+/* .navName {
+  font-family: 'Monoton', cursive;
+  font-weight: 400;
+  background: rgb(170,52,127);
+  background: linear-gradient(90deg, rgba(170,52,127,1) 90%, rgba(114,231,130,1) 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-size: 1.2em
+} */
 
 .logoLink {
   height: 25px;
@@ -38,7 +71,7 @@
 }
 
 .loginPage {
-  /* margin-top: 18%; */
+  margin-top: 18%;
   top: 0;
   bottom: 0;
   left: 0;
@@ -47,28 +80,151 @@
 }
 
 .loginTitle {
-  font-size: 70px
+  font-size: 70px;
+  font-family: 'Vollkorn', serif;
+  color: rgb(248,235,171)
 }
 
 .loginForm {
   width: 40%;
 }
 
-.jumbotron {
-  background-color: #5AB1B3;
-  color: #FFD1B5
+input[type=text], input[type=password] {
+  background-color: #bdc8e9 !important;
+  color: black !important
 }
 
+::placeholder {
+  color: rgba(32,41,70,1) !important;
+  font-family: 'Vollkorn', serif !important;
+}
+
+.welcomeTitle {
+  color: white;
+  /* margin-top: 5rem !important; */
+  font-size:3em !important;
+  font-family: 'Vollkorn', serif;
+}
+
+.jumbotron {
+  background: rgb(248,235,171);
+  background: linear-gradient(167deg, rgba(248,235,171,0.49763655462184875) 22%, rgba(246,122,123,0.43601190476190477) 48%, rgba(32,41,70,0.4556197478991597) 74%);
+  color: white;
+  padding: 2rem 4rem;
+  font-family: 'Vollkorn', serif;
+  margin-bottom: 3rem;
+  margin-top: 1rem
+  
+}
+
+.jumboTitle {
+  font-family: 'Monoton', cursive;
+  font-weight: 400;
+  font-size: 7em;
+  background: rgb(248,233,161);
+  background: linear-gradient(160deg, rgba(248,233,161,1) 35%, rgba(247,108,108,1) 44%, rgba(36,48,92,1) 55%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  margin-top: 2rem !important
+}
+
+.radioBtn {
+  margin: 0 4px;
+  font-family: 'Limelight', cursive !important;
+}
+
+.dietInput {
+  margin: 0 3px !important
+}
+
+.searchBtn {
+  /* background: #720D4B !important; */
+  background: #24305c !important;
+  color: #f8e9a1 !important;
+  font-family: 'Limelight', cursive !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+.searchBtn:hover {
+  background: #f76c6c !important;
+  color: #24305c !important;
+}
+
+.bottomBtn {
+  /* background: #720D4B !important; */
+  background: #f8e9a1 !important;
+  color: #24305c !important;
+  /* font-family: 'Limelight', cursive !important; */
+  font-family: 'Vollkorn', serif !important;
+  font-weight: 600 !important
+}
+
+.bottomBtn:hover {
+  background: #f76c6c !important;
+  color: #24305c !important;
+}
+
+#recipeLikeBtn, #movieLikeBtn {
+  box-shadow: 0 0 0 1px #f8e9a1 !important;
+  color: #f8e9a1 !important;
+}
+
+#movieLikeBtn:hover {
+  background: #f76c6c !important;
+  color: #24305c !important;
+}
+
+#recipeLikeBtn:hover {
+  background: #f76c6c !important;
+  color: #24305c !important;
+}
+
+/* .ui.basic.red.button, .ui.basic.red.buttons .button {
+  box-shadow: 0 0 0 1px #f8e9a1 !important;
+  color: #f8e9a1 !important;
+} */
+
 .resultsContainer {
-  /* background-color: white; */
-  /* background: rgb(140,0,89); */
-  /* background: linear-gradient(180deg, rgba(140,0,89,1) 0%, rgba(140,0,89,1) 0%, rgba(140,0,89,0.30155812324929976) 0%, rgba(172,230,5,0.39959733893557425) 100%); */
-  background: rgb(140,0,89);
-  background: linear-gradient(180deg, rgba(140,0,89,1) 0%, rgba(140,0,89,1) 0%, rgba(235,198,221,1) 0%, rgba(203,214,172,1) 100%);
+  /* background: rgb(140,0,89);
+  background: linear-gradient(180deg, rgba(140,0,89,.7) 0%, rgba(140,0,89,.7) 0%, rgba(235,198,221,.7) 0%, rgba(203,214,172,.7) 100%); */
+  /* background: rgb(255,206,54);
+  background: linear-gradient(180deg, rgba(255,206,54,0.5368522408963585) 0%, rgba(255,111,14,0.5592612044817927) 40%, rgba(74,103,255,0.5172443977591037) 71%); */
+  background: rgb(248,233,161);
+  background: linear-gradient(180deg, rgba(248,233,161,0.6825105042016807) 23%, rgba(247,108,108,0.6404936974789917) 37%, rgba(36,48,92,0.6516981792717087) 60%);
   padding: 10px;
   border-radius: .28571429rem;
   overflow: hidden;
+  box-shadow: 0 8px 40px rgba(246,255,249, .6) !important;
+  color: white !important;
 }
+
+.userFoodResultsContainer {
+  background: rgba(74,103,255,.3);
+  padding: 10px;
+  border-radius: .28571429rem;
+  overflow: hidden;
+  box-shadow: 0 0px 13px rgba(246,255,249, .6) !important;
+  margin: 5px auto !important;
+  width: 30%
+}
+
+.userMovieResultsContainer {
+  background: rgba(74,103,255,.3);
+  padding: 10px;
+  border-radius: .28571429rem;
+  overflow: hidden;
+  box-shadow: 0 0px 13px rgba(246,255,249, .6) !important;
+  margin: 5px auto !important;
+  width: 30%;
+  overflow: hidden !important
+}
+
+.userRecipes {
+  background: rgb(255,206,54);
+  background: linear-gradient(0deg, rgba(255,206,54,0.7609418767507002) 0%, rgba(255,111,14,0.7217261904761905) 40%, rgba(74,103,255,0.7637429971988796) 71%);
+}
+
 
 
 
@@ -78,12 +234,37 @@
   border: 1px solid rgb(140,0,89) !important
 }
 
+.userResultsImage {
+  border-radius: 10px 10px 0px 0px !important; 
+  margin-top: 10px !important;
+  border: 1px solid rgb(140,0,89) !important;
+}
+
 .centeredRecipeButton {
-  margin: 0 auto !important
+  margin: 0 auto !important;
+  /* background: #720D4B !important; */
+  background: #f8e9a1 !important;
+  color: #24305c !important;
+  border: thin solid #c3aa20 !important;
+  font-family: 'Limelight', cursive !important;
+}
+
+.centeredRecipeButton:hover {
+  background: #f76c6c !important;
+  color: #24305c !important;
 }
 
 .uncenteredRecipeButton {
-  float: left
+  float: left;
+  /* background: #720D4B !important; */
+  background: #f8e9a1 !important;
+  color: #24305c !important;
+  font-family: 'Limelight', cursive !important;
+}
+
+.uncenteredRecipeButton:hover {
+  background: #f76c6c !important;
+  color: #24305c !important;
 }
 
 .ingredientList {
@@ -91,13 +272,54 @@
   text-align: left;
 }
 
-.ui.segment {
-  background: rgba(235,198,221,1) !important
+/* .ui.segment {
+  background: rgba(235,198,221,.6) !important
+} */
+
+.userImages {
+  border-radius: 10px !important
+}
+
+.ui.image img, .ui.image svg {
+  border-radius: 10px 10px 0px 0px;
+  border: thin solid rgba(248,171,135,1)
+}
+
+.likedFoodResults {
+  background: rgba(248,171,135,1) !important;
+  margin: 10px auto !important
+}
+
+.laterFoodResults {
+  background: rgba(248,171,135,1) !important;
+  margin: 10px auto !important
+}
+
+.likedMovieResults {
+  background: rgba(36,48,92,1) !important;
+  margin: 10px auto !important
+}
+
+.laterMovieResults {
+  background: rgba(36,48,92,1) !important;
+  margin: 10px auto !important
+}
+
+.dropForm {
+  box-shadow: 0 8px 40px rgba(246,255,249, .6) !important;
+  /* background: rgba(141,236,154,.6) !important; */
+  /* background: rgba(235,198,221,.6) !important; */
+  /* background: rgba(255,206,54,.6) !important */
+  background: rgba(248,233,161,.7) !important
 }
 
 .dropDown {
   margin-bottom: 5px
 }
+
+/* .results {
+  box-shadow: 0 8px 40px rgba(246,255,249, .6) !important
+} */
 
 .recipeList {
   text-align: left
@@ -109,23 +331,23 @@
 
 /* Drop Down Outline */
 .css-1pahdxg-control {
-  border-color: #8c0059 !important;
-  box-shadow: 0 0 0 1px #8c0059 !important
+  border-color: #24305c !important;
+  box-shadow: 0 0 0 1px #24305c !important
 }
 
 .css-1pahdxg-control:hover {
-  border-color: #8c0059 !important
+  border-color: #24305c !important
 }
 
 /* Selected option from drop down */
 .css-9gakcf-option{
-  background-color: rgba(172, 230, 5, 1) !important;
-  color: black !important
+  background-color: rgba(36, 48, 92, 1) !important;
+  color: white !important
 }
 
 /* Hover over drop down selection */
 .css-1n7v3ny-option {
-  background-color: rgba(172, 230, 5, 0.3) !important;
+  background-color: rgba(26, 48, 92, 0.3) !important;
 }
 
 .userPageTitle {
@@ -135,14 +357,35 @@
   font-size: 85px;
 }
 
-/* .modalButton {
-  height: 30px;
-  width: auto
+/* .movieModalButton {
+  padding: 4px !important;
+  background-color: rgba(255,255,255,0) !important;
+  color: black !important
+}
+
+.recipeModalButton{
+
 } */
 
-.ui.modal {
-  background: #cbd6ac !important
+.recipeModalButton, .movieModalButton {
+  padding: 4px !important;
+  background-color: rgba(255,255,255,0) !important;
+  color: black !important;
 }
+
+.userItemTitle {
+  font-size: 1.5em;
+}
+
+.userItemMovieTitle {
+  font-size: 1.5em;
+  color: white
+}
+
+
+/* .ui.modal {
+  background: #cbd6ac !important
+} */
 
 i.icon {
   display: inline
@@ -160,13 +403,45 @@ i.icon {
   margin-bottom: 16px
 }
 
+.movieForm {
+  padding-top: 2.3em !important;
+  box-shadow: 0 8px 40px rgba(246,255,249, .7)!important;
+  /* background: rgba(235,198,221,.6) !important; */
+  /* background: rgba(255,206,54,.6) !important */
+  background: rgba(248,233,161,.7) !important
+}
+
+.ui.grid>* {
+  padding-left: none !important
+}
+
 .userList {
   font-size: 16px;
+  padding: 0px 0px 0px 40px !important;
   text-align: left
 }
 
+@media (max-width: 768px) {
+  /* .userResultsImage {
+    width: 90px;
+    height: 90px;
+  } */
+  .userFoodResultsContainer {
+    margin: 0 auto;
+    width: 85%
+  }
+}
+
 .favoriteListItem {
-  margin-right: 10px
+  margin-right: 10px;
+  font-family: 'Vollkorn', serif !important;
+  font-size: 1.8em
+}
+
+.favoriteFoodListItem {
+  margin-right: 10px;
+  font-family: 'Vollkorn', serif;
+  font-size: 1.8em
 }
 
 .App {

@@ -25,6 +25,7 @@ const RecipeContainer = (props) => {
 
     return (
         <div className='resultsContainer'>
+        <Button className='searchBtn' onClick={props.handleNext} >Next</Button>
             <Card.Img className='resultsImg' variant="top" src={baseImageUrl}/>
             <Card.Body>
                 <Card.Title><strong>{props.recipe.title.toUpperCase()}</strong></Card.Title>
@@ -48,10 +49,10 @@ const RecipeContainer = (props) => {
                     </ListGroup>
                 </div>
                 : null }
-                <Button onClick={props.handleLike} floated='right' basic color='red' icon>
+                <Button id='recipeLikeBtn' className='likeBtn' onClick={props.handleLike} floated='right' basic color='red' icon>
                     <Icon name='heart' />
                 </Button>
-                <Button floated='right' variant="primary" onClick={props.handleSavedForLater} >Save for Later</Button>
+                <Button className='bottomBtn' floated='right' variant="primary" onClick={props.handleSavedForLater} >Save for Later</Button>
                 
                 
             </Card.Body>

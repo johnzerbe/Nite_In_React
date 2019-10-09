@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Welcome from '../Welcome';
 import { Link } from 'react-router-dom';
 import { Button, Form, Message } from 'semantic-ui-react'
 
@@ -11,7 +12,8 @@ class Login extends Component {
             username: '',
             password: '',
             message: '',
-            isLogged: false
+            isLogged: false,
+            showJumbo: true
         }
     }
 
@@ -21,6 +23,12 @@ class Login extends Component {
         this.setState(
             {[e.currentTarget.name]: e.currentTarget.value}
         )
+    }
+
+    handleJumbo = () => {
+        this.setState({
+            showJumbo: false
+        })
     }
 
     handleSubmit = async (e) => {
@@ -58,19 +66,29 @@ class Login extends Component {
 
     render() {
         return (
+            <div>
+            { this.state.showJumbo 
+            ?
+            <div>
+                 <Welcome />
+                 <Button onClick={this.handleJumbo} className='bottomBtn'>Got It!</Button>
+            </div>
+            :
             <div className='loginPage'>
                 <h1 className='loginTitle'>Login</h1>
                 <Form error className='loginForm' onSubmit={this.handleSubmit}>
-                    <Form.Input type='text' name='username' label='Username' placeholder='Username' onChange={this.handleChange}/>
-                    <Form.Input type='password' name='password' label='Password' placeholder='Password' onChange={this.handleChange}/>
+                    <Form.Input type='text' className='loginInput' name='username' placeholder='Username' onChange={this.handleChange}/>
+                    <Form.Input type='password' className='loginInput' name='password' placeholder='Password' onChange={this.handleChange}/>
                     { this.state.message !== "" ? <Message
                     error
                     header='Wait a Minute!'
                     content= {this.state.message}
                     /> : null}
-                    <Button type='submit' >Login</Button>
+                    <Button type='submit' className='bottomBtn'>Login</Button>
                 </Form>
                 Don't have an account yet? <Link to='/register'>Register Here!</Link>
+            </div>
+            }
             </div>
         )
     }

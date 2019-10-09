@@ -5,7 +5,6 @@ const cuisineList = [
     { label: "All", value: ""},
     { label: "American", value: "American" },
     { label: "Cajun", value: "Cajun" },
-    { label: "Caribbean", value: "Caribbean" },
     { label: "Chinese", value: "Chinese" },
     { label: "French", value: "French" },
     { label: "German", value: "German" },

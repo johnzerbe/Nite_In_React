@@ -2,11 +2,10 @@ import React from 'react'
 import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
-const RecipeModal = (props) => {
+const SavedForLaterRecipeModal = (props) => {
 
     const handleDeleteRecipe = (id, e) => {
-        props.handleDelete(props.recipes.id, 'recipes');
-        props.handleClick()
+        props.handleDeleteSaveForLater(props.recipes.id, 'recipes')
     }
 
     const baseImageUrl = `https://spoonacular.com/recipeImages/${props.recipes.id}-556x370`;
@@ -30,39 +29,34 @@ const RecipeModal = (props) => {
     });
 
     return(
-        <Modal trigger={<Button onClick={props.handleClick} className='recipeModalButton' size='mini'>
+        <Modal className='modalBody' trigger={<Button onClick={props.handleClick} className='recipeModalButton' size='mini'>
              {/* <Icon name='right chevron' /> */}
              <Image wrapped className='userResultsImage' size='small' src={baseImageUrl2} />
+
              <h4 className='userItemTitle'>{props.recipeName}</h4>
         </Button>}>
             {/* <Modal.Header>{props.recipes.title}</Modal.Header> */}
-            
-                
-                    <Modal.Content image>
-                    <Image wrapped size='huge' src={baseImageUrl} />
-                    <Modal.Description>
-                    <Header>{props.recipes.title}</Header>
-                        <ListGroup className='ingredientModal'>
-                        <strong>Ingredients</strong>
-                        { ingredientList }
-                        </ListGroup>
-                        <ListGroup>
-                        <strong>Steps</strong>
-                        { recipeSteps }
-                        </ListGroup>
-                    </Modal.Description>
-                    </Modal.Content>
-                    <Modal.Actions>
-                    <Button onClick={handleDeleteRecipe} primary>
-                    <Icon name='times' />Delete 
-                    </Button>
-                    </Modal.Actions>
-                
-            
-            
+            <Modal.Content image>
+            <Image wrapped size='huge' src={baseImageUrl} />
+            <Modal.Description>
+                <Header>{props.recipes.title}</Header>
+                <ListGroup className='ingredientModal'>
+                <strong>Ingredients</strong>
+                { ingredientList }
+                </ListGroup>
+                <ListGroup>
+                <strong>Steps</strong>
+                { recipeSteps }
+                </ListGroup>
+            </Modal.Description>
+            </Modal.Content>
+            <Modal.Actions>
+            <Button onClick={handleDeleteRecipe} primary>
+            <Icon name='times' />Delete 
+            </Button>
+            </Modal.Actions>
         </Modal>
-        
     )
 }
 
-export default RecipeModal
+export default SavedForLaterRecipeModal

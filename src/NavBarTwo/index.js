@@ -6,8 +6,9 @@ import { Navbar, Nav } from 'react-bootstrap';
 const NavBarOne = (props) =>  {
     return (
         <div  className='navbar'>
-            <Link to='/home'>
-                <img className='logoLink' src='nitein_logo.png' alt='logo' />
+            <Link to='/home' className='navLink'>
+                {/* <img className='logoLink' src='nitein_logo.png' alt='logo' /> */}
+                NiteIn
             </Link>
             
             <Link to='/' className='navLink'>Logout</Link>

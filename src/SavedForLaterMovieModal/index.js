@@ -1,10 +1,10 @@
 import React from 'react'
 import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
 
-const MovieModal = (props) => {
+const SavedForLaterMovieModal = (props) => {
 
     const handleDeleteMovie = (id, e) => {
-        props.handleDelete(props.movie.id, 'movies')
+        props.handleDeleteSaveForLater(props.movie.id, 'movies')
     }
 
     let moviePoster = `https://image.tmdb.org/t/p/w300${props.movie.poster_path}`;
@@ -12,7 +12,7 @@ const MovieModal = (props) => {
     return (
         <Modal className='modalBody' trigger={<Button className='movieModalButton' size='mini'>
             {/* <Icon name='right chevron' /> */}
-            <Image wrapped clasName='userResultsImage' size='small' src={moviePoster} />
+            <Image wrapped className='userImages' size='small' src={moviePoster} />
             <h4 className='userItemMovieTitle'>{props.movieName}</h4>
           </Button>}>
             <Modal.Content image>
@@ -33,4 +33,4 @@ const MovieModal = (props) => {
     )
 }
 
-export default MovieModal
+export default SavedForLaterMovieModal

@@ -25,7 +25,7 @@ const SavedForLaterMovieModal = (props) => {
               </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
-              <Button onClick={handleDeleteMovie} primary>
+              <Button className='deleteBtn' onClick={handleDeleteMovie} primary>
               <Icon name='times' />Delete
               </Button>
             </Modal.Actions>

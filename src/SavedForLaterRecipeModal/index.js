@@ -51,7 +51,7 @@ const SavedForLaterRecipeModal = (props) => {
             </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
-            <Button onClick={handleDeleteRecipe} primary>
+            <Button className='deleteBtn' onClick={handleDeleteRecipe} primary>
             <Icon name='times' />Delete 
             </Button>
             </Modal.Actions>

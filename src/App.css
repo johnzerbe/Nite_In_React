@@ -4,13 +4,22 @@
 
 .navbar {
   text-align: right;
-  font-size: 18px;
+  font-size: 1.5em;
+  padding: 0.6em;
+  /* background: rgb(132,151,212); */
+  /* background: linear-gradient(167deg, rgba(132,151,212,1) 0%, rgba(31,40,68,1) 100%); */
   /* float: right */
 }
 
 .navLink {
   margin: 0 10px;
-  color: rgba(248,233,161,1)
+  color: rgba(248,233,161,1);
+  transition: all 0.3s 
+}
+
+.navLink:hover {
+  color: rgba(246,122,123,1);
+  transition: all 0.3s !important
 }
 
 .lead {
@@ -130,7 +139,8 @@ input[type=text], input[type=password] {
 
 .radioBtn {
   margin: 0 4px;
-  font-family: 'Limelight', cursive !important;
+  /* font-family: 'Limelight', cursive !important; */
+  font-family: 'Vollkorn', serif !important;
 }
 
 .dietInput {
@@ -141,14 +151,18 @@ input[type=text], input[type=password] {
   /* background: #720D4B !important; */
   background: #24305c !important;
   color: #f8e9a1 !important;
-  font-family: 'Limelight', cursive !important;
+  /* font-family: 'Limelight', cursive !important; */
+  font-family: 'Vollkorn', serif !important;
   display: block !important;
   margin: 0 auto !important;
+  transition: all 0.3s !important;
+  font-size: 1em !important
 }
 
 .searchBtn:hover {
   background: #f76c6c !important;
   color: #24305c !important;
+  transition: all 0.3s !important
 }
 
 .bottomBtn {
@@ -157,12 +171,25 @@ input[type=text], input[type=password] {
   color: #24305c !important;
   /* font-family: 'Limelight', cursive !important; */
   font-family: 'Vollkorn', serif !important;
-  font-weight: 600 !important
+  font-weight: 600 !important;
+  transition: all 0.3s !important;
+  font-size: 1em !important;
 }
 
 .bottomBtn:hover {
   background: #f76c6c !important;
   color: #24305c !important;
+  transition: all 0.3s !important
+}
+
+.deleteBtn {
+  background: rgba(32,41,70,1) !important;
+  transition: all 0.3s !important;
+}
+
+.deleteBtn:hover {
+  background: rgba(246,122,123,1) !important;
+  color: rgba(32,41,70,1) !important;
 }
 
 #recipeLikeBtn, #movieLikeBtn {
@@ -206,7 +233,14 @@ input[type=text], input[type=password] {
   overflow: hidden;
   box-shadow: 0 0px 13px rgba(246,255,249, .6) !important;
   margin: 5px auto !important;
-  width: 30%
+  width: 30%;
+  transition: all 0.4s !important
+}
+
+.userFoodResultsContainer:hover {
+  /* background: rgba(14,71,244,.4) !important; */
+  background: rgba(140,0,89,.7);
+  transition: all 0.4s !important
 }
 
 .userMovieResultsContainer {
@@ -217,7 +251,13 @@ input[type=text], input[type=password] {
   box-shadow: 0 0px 13px rgba(246,255,249, .6) !important;
   margin: 5px auto !important;
   width: 30%;
-  overflow: hidden !important
+  overflow: hidden !important;
+  transition: all 0.4s !important
+}
+
+.userMovieResultsContainer:hover {
+  background: rgba(121,152,245,.7) !important;
+  transition: all 0.4s !important
 }
 
 .userRecipes {
@@ -246,12 +286,16 @@ input[type=text], input[type=password] {
   background: #f8e9a1 !important;
   color: #24305c !important;
   border: thin solid #c3aa20 !important;
-  font-family: 'Limelight', cursive !important;
+  /* font-family: 'Limelight', cursive !important; */
+  font-family: 'Vollkorn', serif !important;
+  transition: all 0.3s !important;
+  font-size: 1em !important;
 }
 
 .centeredRecipeButton:hover {
   background: #f76c6c !important;
   color: #24305c !important;
+  transition: all 0.3s !important
 }
 
 .uncenteredRecipeButton {
@@ -259,12 +303,16 @@ input[type=text], input[type=password] {
   /* background: #720D4B !important; */
   background: #f8e9a1 !important;
   color: #24305c !important;
-  font-family: 'Limelight', cursive !important;
+  /* font-family: 'Limelight', cursive !important; */
+  font-family: 'Vollkorn', serif !important;
+  transition: all 0.3s !important;
+  font-size: 1em !important;
 }
 
 .uncenteredRecipeButton:hover {
   background: #f76c6c !important;
   color: #24305c !important;
+  transition: all 0.3s !important
 }
 
 .ingredientList {
@@ -375,11 +423,13 @@ input[type=text], input[type=password] {
 
 .userItemTitle {
   font-size: 1.5em;
+  font-family: 'Vollkorn', serif !important;
 }
 
 .userItemMovieTitle {
   font-size: 1.5em;
-  color: white
+  color: white;
+  font-family: 'Vollkorn', serif !important;
 }
 
 
@@ -395,9 +445,7 @@ i.icon {
   width: 10% !important
 } */
 
-.ui.primary.button {
-  background-color: #9a3675 !important
-}
+
 
 .ingredientModal {
   margin-bottom: 16px
@@ -441,7 +489,8 @@ i.icon {
 .favoriteFoodListItem {
   margin-right: 10px;
   font-family: 'Vollkorn', serif;
-  font-size: 1.8em
+  font-size: 1.8em;
+  color: rgba(32,41,70,1)
 }
 
 .App {

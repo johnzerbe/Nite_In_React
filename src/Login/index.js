@@ -34,7 +34,7 @@ class Login extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
 
-        const login = await fetch('http://localhost:9000/auth', {
+        const login = await fetch(process.env.development, {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify(this.state),

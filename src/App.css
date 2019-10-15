@@ -260,10 +260,10 @@ input[type=text], input[type=password] {
   transition: all 0.4s !important
 }
 
-.userRecipes {
+/* .userRecipes {
   background: rgb(255,206,54);
   background: linear-gradient(0deg, rgba(255,206,54,0.7609418767507002) 0%, rgba(255,111,14,0.7217261904761905) 40%, rgba(74,103,255,0.7637429971988796) 71%);
-}
+} */
 
 
 

@@ -219,6 +219,8 @@ class HomeContainer extends Component {
             }
         });
 
+        console.log('savedRecipe: ', savedRecipe);
+
         const parsedSavedRecipe = await savedRecipe.json();
 
         console.log('parsedSavedRecipe: ', parsedSavedRecipe);

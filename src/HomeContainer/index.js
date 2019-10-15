@@ -12,7 +12,7 @@ import '../App.css';
 
 
 const recipeAPIKey = process.env.REACT_APP_API_KEYSPOON;
-const movieAPIKey = process.env.REACT_APP_API_KEYMOVIE;
+const movieAPIKey = process.env.REACT_APP_API_KEYMOVIE.replace(/\W/g, '');
 
 const booksAPI = 'https://openlibrary.org/subjects/mystery.json?limit=1';
 const moviesAPI = 'https://api.themoviedb.org/3/discover/movie?with_genres=';

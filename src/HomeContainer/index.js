@@ -170,7 +170,7 @@ class HomeContainer extends Component {
     }
 
     handleLikeRecipeClick = async (e) => {
-        const likedRecipe = await fetch('http://localhost:9000/favorite/recipes', {
+        const likedRecipe = await fetch(process.env.REACT_APP_BACKEND_URL + '/favorite/recipes', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify({
@@ -189,7 +189,7 @@ class HomeContainer extends Component {
     };
 
     handleLikeMovieClick = async (e) => {
-        const likedMovie = await fetch('http://localhost:9000/favorite/movies', {
+        const likedMovie = await fetch(process.env.REACT_APP_BACKEND_URL + '/favorite/movies', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify({
@@ -206,7 +206,7 @@ class HomeContainer extends Component {
     }
 
     handleSavedForLaterRecipe = async (e) => {
-        const savedRecipe = await fetch('http://localhost:9000/favorite/savedforlater/recipes', {
+        const savedRecipe = await fetch(process.env.REACT_APP_BACKEND_URL + '/favorite/savedforlater/recipes', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify({
@@ -225,7 +225,7 @@ class HomeContainer extends Component {
     }
 
     handleSavedForLaterMovie = async (e) => {
-        const savedMovie = await fetch('http://localhost:9000/favorite/savedforlater/movies', {
+        const savedMovie = await fetch(process.env.REACT_APP_BACKEND_URL + '/favorite/savedforlater/movies', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify({

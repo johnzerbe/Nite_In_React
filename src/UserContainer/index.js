@@ -29,7 +29,7 @@ class UserContainer extends Component {
 
     getData = async () => {
         try {
-            const responseGetData = await fetch('http://localhost:9000/favorite', {
+            const responseGetData = await fetch(process.env.REACT_APP_BACKEND_URL + '/favorite', {
                 method: 'GET',
                 credentials: 'include'
             });
@@ -62,7 +62,7 @@ class UserContainer extends Component {
 
     handleDeleteFavorite = async (id, type, e) => {
         try {
-            const itemToDelete = await fetch(`http://localhost:9000/favorite/${id}/${type}`, {
+            const itemToDelete = await fetch(process.env.REACT_APP_BACKEND_URL + `/favorite/${id}/${type}`, {
                 method: 'DELETE',
                 credentials: 'include'
             })
@@ -80,7 +80,7 @@ class UserContainer extends Component {
 
     handleDeleteSaveForLater = async (id, type, e) => {
         try {
-            const itemsToDelete = await fetch(`http://localhost:9000/favorite/savedForLater/${id}/${type}`, {
+            const itemsToDelete = await fetch(process.env.REACT_APP_BACKEND_URL + `/favorite/savedForLater/${id}/${type}`, {
                 method: 'DELETE',
                 credentials: 'include'
             })

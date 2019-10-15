@@ -474,7 +474,7 @@ i.icon {
     width: 90px;
     height: 90px;
   } */
-  .userFoodResultsContainer {
+  .userFoodResultsContainer, .userMovieResultsContainer {
     margin: 0 auto;
     width: 85%
   }

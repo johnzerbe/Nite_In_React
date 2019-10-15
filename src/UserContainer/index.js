@@ -31,7 +31,10 @@ class UserContainer extends Component {
         try {
             const responseGetData = await fetch(process.env.REACT_APP_BACKEND_URL + '/favorite', {
                 method: 'GET',
-                credentials: 'include'
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
             console.log('responseGetData: ', responseGetData);
             if(responseGetData.status !== 200) {

@@ -13,7 +13,7 @@ const NavBarOne = (props) =>  {
         <div  className='navbar'>
             
             <Link to='/mypage' className='navLink'>MyNites</Link>
-            <Link to='/' onClick={this.handleLogout} className='navLink'>Logout</Link>
+            <Link to='/' onClick={handleLogout} className='navLink'>Logout</Link>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import Login from './Login';
 import Register from './Register';
@@ -16,9 +16,10 @@ const My404 = () => {
   )
 };
 
-class App() {
-  constructor()
+class App extends Component {
+  constructor();
   {
+    super();
     this.state=
     {
       fakeURL: process.env.REACT_APP_BACKEND_URL + '/fakeroute'

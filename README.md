@@ -10,12 +10,25 @@ My wife and I are what I consider regular homebodies. We enjoy our time together
 # Screenshot #2
 ![screenshot 2](./public/nitein-mynites.png)
 
-# Tech/Framework Used
+# Tech/Frameworks Used
 ### Front-End:
 * React
 * Semantic-UI
 * Reactstrap
 
-### Back-End
+### Back-End: (See nite_in_api)
 * Node.js (Express)
 * MongoDB
+
+# Features
+* Login/Register and Logout
+* Radio buttons for selecting dietary preferences
+* Drop down menus for genre/cuisine selection
+* Collapsable step-by-step recipes 
+* 'Next' buttons that allow users to skip a selected item
+* Options to 'like' and 'save for later' that link to that specific user's account, which can be viewed upon logging in.
+* Modals that display a recipe or movie summary when clicking a liked item
+
+# Third Party API's Used
+* [Spoonacular API](https://spoonacular.com/food-api)
+* [The Movie DB](https://www.themoviedb.org/documentation/api)

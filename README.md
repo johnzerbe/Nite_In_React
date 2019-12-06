@@ -6,4 +6,3 @@ My wife and I are what I consider regular homebodies. We enjoy our time together
 
 # Screenshot 1
 ![screenshot 1](./public/nitein.png)
-<img src="./public/nitein.png" width="250">

@@ -9,3 +9,13 @@ My wife and I are what I consider regular homebodies. We enjoy our time together
 
 # Screenshot #2
 ![screenshot 2](./public/nitein-mynites.png)
+
+# Tech/Framework Used
+### Front-End:
+* React
+* Semantic-UI
+* Reactstrap
+
+### Back-End
+* Node.js (Express)
+* MongoDB

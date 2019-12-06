@@ -8,4 +8,4 @@ My wife and I are what I consider regular homebodies. We enjoy our time together
 ![screenshot 1](./public/nitein.png)
 
 # Screenshot #2
-![screenshot 2](./public/nitein_mynites.png)
+![screenshot 2](./public/nitein-mynites.png)

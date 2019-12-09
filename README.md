@@ -16,7 +16,7 @@ My wife and I are what I consider regular homebodies. We enjoy our time together
 * Semantic-UI
 * Reactstrap
 
-### Back-End: (See back-end code[here](https://github.com/johnzerbe/nite_in_api))
+### Back-End: (See back-end code [here](https://github.com/johnzerbe/nite_in_api))
 * Node.js (Express)
 * MongoDB
 

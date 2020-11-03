@@ -179,7 +179,8 @@ class HomeContainer extends Component {
                 chosenRecipeIngredients: this.state.chosenRecipeIngredients
             }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://nitein3.herokuapp.com'
             }
         });
 
@@ -196,7 +197,8 @@ class HomeContainer extends Component {
                 chosenMovie: this.state.chosenMovie, 
             }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://nitein3.herokuapp.com'
             }
         });
 
@@ -215,7 +217,8 @@ class HomeContainer extends Component {
                 chosenRecipeIngredients: this.state.chosenRecipeIngredients
             }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://nitein3.herokuapp.com'
             }
         });
 
@@ -234,7 +237,8 @@ class HomeContainer extends Component {
                 chosenMovie: this.state.chosenMovie,
             }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://nitein3.herokuapp.com'
             }
         });
 

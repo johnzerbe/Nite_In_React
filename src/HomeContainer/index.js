@@ -180,13 +180,12 @@ class HomeContainer extends Component {
             }),
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://nitein3.herokuapp.com'
             }
         });
 
-        // const parsedFavorite = await likedRecipe.json();
+        const parsedFavorite = await likedRecipe.json();
 
-        console.log('parsedFavorite: ',likedRecipe)
+        console.log('parsedFavorite: ', parsedFavorite)
     };
 
     handleLikeMovieClick = async (e) => {
@@ -198,7 +197,6 @@ class HomeContainer extends Component {
             }),
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://nitein3.herokuapp.com'
             }
         });
 
@@ -218,7 +216,6 @@ class HomeContainer extends Component {
             }),
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://nitein3.herokuapp.com'
             }
         });
 
@@ -238,7 +235,6 @@ class HomeContainer extends Component {
             }),
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://nitein3.herokuapp.com'
             }
         });
 

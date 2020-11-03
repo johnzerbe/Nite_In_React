@@ -39,7 +39,8 @@ class Login extends Component {
             credentials: 'include',
             body: JSON.stringify(this.state),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Credentials': true
             }
         });
 
@@ -59,7 +60,7 @@ class Login extends Component {
             this.setState({
                 isLogged: true
             });
-
+            console.log("going home")
             this.props.history.push('/home')
         }
     }

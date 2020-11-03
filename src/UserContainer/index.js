@@ -23,10 +23,6 @@ class UserContainer extends Component {
         }
     }
 
-    componentDidMount() {
-        this.getData();
-    };
-
     getData = async () => {
         try {
             const responseGetData = await fetch(process.env.REACT_APP_BACKEND_URL + '/favorite', {
@@ -53,6 +49,10 @@ class UserContainer extends Component {
             console.log('getData Error: ', err);
             return err;
         }
+    };
+
+    componentDidMount() {
+        this.getData();
     };
 
     handleModalClick = (e) => {

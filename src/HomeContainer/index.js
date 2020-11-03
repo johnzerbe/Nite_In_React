@@ -186,7 +186,7 @@ class HomeContainer extends Component {
 
         // const parsedFavorite = await likedRecipe.json();
 
-        console.log('parsedFavorite: ',parsedFavorite)
+        console.log('parsedFavorite: ',likedRecipe)
     };
 
     handleLikeMovieClick = async (e) => {

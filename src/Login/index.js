@@ -46,7 +46,7 @@ class Login extends Component {
 
         const parsedLogin = await login.json();
 
-        console.log(parsedLogin, ' < RESPONSE FROM LOGIN');
+        // console.log(parsedLogin, ' < RESPONSE FROM LOGIN');
 
         if(parsedLogin.status.code === 400){
             this.setState({
@@ -55,12 +55,10 @@ class Login extends Component {
         }
 
         if(parsedLogin.status.message === 'Success') {
-            console.log('YOU LOGGED IN SUCCESSFULLY');
 
             this.setState({
                 isLogged: true
             });
-            console.log("going home")
             this.props.history.push('/home')
         }
     }

@@ -196,6 +196,8 @@ class HomeContainer extends Component {
                 chosenMovie: this.state.chosenMovie, 
             }),
             headers: {
+                'Accept': 'application/json',
+                'Accept-Language': 'en-US',
                 'Content-Type': 'application/json',
             }
         });

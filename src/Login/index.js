@@ -40,7 +40,7 @@ class Login extends Component {
             body: JSON.stringify(this.state),
             headers: {
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://nitein3.herokuapp.com'
+                'Access-Control-Allow-Origin': 'https://nitein3.herokuapp.com',
             }
         });
 

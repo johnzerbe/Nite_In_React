@@ -150,14 +150,14 @@ class HomeContainer extends Component {
         this.setState({
             selectedGenre: option.value
         });
-        console.log(this.state.selectedGenre)
+        // console.log(this.state.selectedGenre)
     }
 
     handleRecipeClick = (e) => {
         this.setState((previousState) => ({
             showRecipeDetails: !previousState.showRecipeDetails
         }), () => {
-            console.log(this.state.showRecipeDetails);
+            // console.log(this.state.showRecipeDetails);
             this.showRecipeButton();
         })
     }
@@ -184,6 +184,7 @@ class HomeContainer extends Component {
         });
 
         const parsedFavorite = await likedRecipe.json();
+        return parsedFavorite
 
         console.log('parsedFavorite: ', parsedFavorite)
     };

@@ -17,17 +17,19 @@ const My404 = () => {
   )
 };
 
-class App extends Component {
-  constructor()
-  {
-    super();
-    this.state=
-    {
-      fakeURL: process.env.REACT_APP_BACKEND_URL + '/fakeroute'
-    }
-  }
-  render()
-  {
+// class App extends Component {
+//   constructor()
+//   {
+//     super();
+//     this.state=
+//     {
+//       fakeURL: process.env.REACT_APP_BACKEND_URL + '/fakeroute'
+//     }
+//   }
+//   render()
+//   {
+  function App() {
+
     return (
       <div>
       <main className="App">
@@ -45,6 +47,6 @@ class App extends Component {
       </div>
     );
   }
-}
+
 
 export default App;

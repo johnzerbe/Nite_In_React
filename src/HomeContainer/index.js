@@ -184,7 +184,6 @@ class HomeContainer extends Component {
         });
 
         const parsedFavorite = await likedRecipe.json();
-        return parsedFavorite
 
         console.log('parsedFavorite: ', parsedFavorite)
     };
